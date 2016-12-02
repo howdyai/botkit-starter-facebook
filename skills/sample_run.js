@@ -6,7 +6,7 @@ WHAT IS THIS?
 
 module.exports = function(controller) {
 
-    controller.hears(['lol'], 'direct_message,direct_mention', function(bot, message) {
+    controller.hears(['lol'], 'message_received', function(bot, message) {
         controller.studio.run(bot, 'lol', message.user, message.channel);
     });
 

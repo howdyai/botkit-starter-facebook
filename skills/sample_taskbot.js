@@ -23,7 +23,7 @@ module.exports = function(controller) {
     // listen for someone saying 'tasks' to the bot
     // reply with a list of current tasks loaded from the storage system
     // based on this user's id
-    controller.hears(['tasks','todo'], 'direct_message', function(bot, message) {
+    controller.hears(['tasks','todo'], 'message_received', function(bot, message) {
 
         // load user from storage...
         controller.storage.users.get(message.user, function(err, user) {
@@ -47,7 +47,7 @@ module.exports = function(controller) {
 
     // listen for a user saying "add <something>", and then add it to the user's list
     // store the new list in the storage system
-    controller.hears(['add (.*)'],'direct_message,direct_mention,mention', function(bot, message) {
+    controller.hears(['add (.*)'],'message_received', function(bot, message) {
 
         var newtask = message.match[1];
         controller.storage.users.get(message.user, function(err, user) {
@@ -65,11 +65,7 @@ module.exports = function(controller) {
                 if (err) {
                     bot.reply(message, 'I experienced an error adding your task: ' + err);
                 } else {
-                    bot.api.reactions.add({
-                        name: 'thumbsup',
-                        channel: message.channel,
-                        timestamp: message.ts
-                    });
+                    bot.reply(message,'Got it.');
                 }
 
             });
@@ -78,7 +74,7 @@ module.exports = function(controller) {
     });
 
     // listen for a user saying "done <number>" and mark that item as done.
-    controller.hears(['done (.*)'],'direct_message', function(bot, message) {
+    controller.hears(['done (.*)'],'message_received', function(bot, message) {
 
         var number = message.match[1];
 
