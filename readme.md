@@ -11,26 +11,26 @@ that created and maintains the open source Botkit library, [Howdy.](https://howd
 
 Clone this repository:
 
-`git clone https://github.com/howdyai/botkit-studio-starter.git`
+`git clone https://github.com/howdyai/botkit-studio-starter-facebook.git`
 
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
 ```
-cd botkit-studio-starter
+cd botkit-studio-starter-facebook
 npm install
 ```
 
-Get a Slack bot token [from your Slack team](https://my.slack.com/apps/new/A0F7YS25R-bots)
+Get a Facebook access tokens [as described here](https://github.com/howdyai/botkit/blob/master/readme-facebook.md#getting-started)
 
 Get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/)
 
 Run your bot from the command line with your new tokens:
 
-`token=<slack token> studio_token=<botkit studio token> node .`
+`page_token=<page access token> verify_token=<webhook verification token> studio_token=<botkit studio token> node .`
 
-Your bot should connect to Slack AND Botkit Studio and leap into action!
+Facebook requires your application be available at an SSL-enabled endpoint. To expose an endpoint during development, we recommend using [localtunnel.me](http://localtunnel.me) or [ngrok](http://ngrok.com), either of which can be used to temporarily expose your bot to Facebook. Once stable and published to the real internet, use nginx or another web server to provide an SSL-powered front end to your bot application.
 
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/talkabot/readme-studio.md)
+Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/readme-studio.md)
 
 ### Extend This Bot
 
