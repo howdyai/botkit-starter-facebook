@@ -31,11 +31,11 @@ if (!process.env.verify_token) {
     process.exit(1);
 }
 
-if (!process.env.studio_token) {
-    console.log('Error: Specify a Botkit studio_token in environment.');
-    usage_tip();
-    process.exit(1);
-}
+// if (!process.env.studio_token) {
+//     console.log('Error: Specify a Botkit studio_token in environment.');
+//     usage_tip();
+//     process.exit(1);
+// }
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.facebookbot({
