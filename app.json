@@ -1,5 +1,5 @@
 {
-  "name": "Botkit Starter Kit for Facebook",
+  "name": "Botkit Starter Kit",
   "description": "A starting point for building custom Facebook applications",
   "repository": "https://github.com/howdyai/botkit-starter-facebook",
   "keywords": ["node", "bots", "facebook","botkit"],
