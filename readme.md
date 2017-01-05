@@ -1,11 +1,20 @@
-# Botkit Studio Starter Kit
+# Botkit Starter Kit for Facebook
 
-This repo contains everything you need to get started building a bot with Botkit Studio!
+This repo contains everything you need to get started building a bot with Botkit and Botkit Studio!
 
 [Botkit Studio](https://studio.botkit.ai/) is a set tools that adds capabilities
 to the open source Botkit library by offering hosted GUI interfaces for script
 management and action trigger definition. Botkit Studio is built by the company
 that created and maintains the open source Botkit library, [Howdy.](https://howdy.ai)
+
+While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
+
+### Instant Start
+
+[Remix this project on GoMix](https://gomix.com/#!/project/botkit-facebook)
+
+[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-facebook/master)
+
 
 ### Get Started
 
