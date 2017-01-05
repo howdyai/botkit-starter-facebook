@@ -13,23 +13,37 @@ var wordfilter = require('wordfilter');
 
 module.exports = function(controller) {
 
-    controller.hears(['howdy'], 'message_received', function(bot, message) {
-        bot.reply(message, ':taco:');
+    /* Collect some very simple runtime stats for use in the uptime/debug command */
+    var stats = {
+        triggers: 0,
+        convos: 0,
+    }
+
+    controller.on('heard_trigger', function() {
+        stats.triggers++;
     });
 
-    controller.hears(['uptime'], 'message_received', function(bot, message) {
+    controller.on('conversationStarted', function() {
+        stats.convos++;
+    });
 
-        bot.reply(message, 'I have been up for ' + formatUptime(process.uptime()));
+
+    controller.hears(['^uptime','^debug'], 'message_received', function(bot, message) {
+
+        bot.createConversation(message, function(err, convo) {
+            if (!err) {
+                convo.setVar('uptime', formatUptime(process.uptime()));
+                convo.setVar('convos', stats.convos);
+                convo.setVar('triggers', stats.triggers);
+
+                convo.say('My main process has been online for {{vars.uptime}}. Since booting, I have heard {{vars.triggers}} triggers, and conducted {{vars.convos}} conversations.');
+                convo.activate();
+            }
+        });
 
     });
 
-    controller.hears(['identify yourself'], 'message_received', function(bot, message) {
-
-        bot.reply(message, 'I am a robot, I cannot lie.');
-
-    });
-
-    controller.hears(['say (.*)','say'], 'message_received', function(bot, message) {
+    controller.hears(['^say (.*)','^say'], 'message_received', function(bot, message) {
         if (message.match[1]) {
 
             if (!wordfilter.blacklisted(message.match[1])) {
@@ -40,7 +54,6 @@ module.exports = function(controller) {
         } else {
             bot.reply(message, 'I will repeat whatever you say.')
         }
-
     });
 
 
@@ -65,7 +78,7 @@ module.exports = function(controller) {
             unit = unit + 's';
         }
 
-        uptime = uptime + ' ' + unit;
+        uptime = parseInt(uptime) + ' ' + unit;
         return uptime;
     }
 

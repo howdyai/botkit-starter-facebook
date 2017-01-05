@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <title>My Botkit Bot</title>
+        <link rel="stylesheet" href="/styles.css" />
+        <script>
+
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId: "MY_APP_ID",
+              xfbml: true,
+              version: "v2.6"
+            });
+
+            FB.Event.subscribe('send_to_messenger', function(e) {
+              // callback for events triggered by the plugin
+              if (e.event == 'clicked') {
+                  window.location = 'success.html';
+              }
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) { return; }
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div>
+
+                <div class="fb-send-to-messenger"
+                  messenger_app_id="MY_APP_ID"
+                  page_id="MY_PAGE_ID"
+                  data-ref="PASS_THROUGH_PARAM"
+                  color="blue"
+                  size="xlarge">
+                </div>
+                <p>Powered by <a href="https://botkit.ai/">Botkit</a></p>
+            </div>
+        </div>
+    </body>
+</html>

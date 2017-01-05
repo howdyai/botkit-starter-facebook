@@ -4,8 +4,12 @@
   "description": "A starter kit for building a custom bot with Botkit Studio",
   "main": "bot.js",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "botkit": "^0.4",
     "dashbot": "0.7.4",
+    "debug": "^2.6.0",
+    "express": "^4.14.0",
+    "request": "^2.79.0",
     "wordfilter": "^0.2.6"
   },
   "devDependencies": {},

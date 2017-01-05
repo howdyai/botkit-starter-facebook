@@ -17,7 +17,6 @@ This is a sample Facebook bot built with Botkit.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-var Botkit = require('botkit');
 
 if (!process.env.page_token) {
     console.log('Error: Specify a Facebook page_token in environment.');
@@ -31,41 +30,33 @@ if (!process.env.verify_token) {
     process.exit(1);
 }
 
-// if (!process.env.studio_token) {
-//     console.log('Error: Specify a Botkit studio_token in environment.');
-//     usage_tip();
-//     process.exit(1);
-// }
+var Botkit = require('botkit');
+var debug = require('debug')('botkit:main');
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.facebookbot({
-    debug: false,
-    retry: 10,
+    debug: true,
+    receive_via_postback: true,
     verify_token: process.env.verify_token,
     access_token: process.env.page_token,
     studio_token: process.env.studio_token
 });
 
-// Dashbot is a turnkey analytics platform for bots.
-// Sign up for a free key here: https://www.dashbot.io/ to see your bot analytics in real time.
-if (process.env.DASHBOT_API_KEY) {
-  var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).slack;
-  controller.middleware.receive.use(dashbot.receive);
-  controller.middleware.send.use(dashbot.send);
-  controller.log.info('Thanks for using Dashbot. Visit https://www.dashbot.io/ to see your bot analytics in real time.');
-} else {
-  controller.log.info('No DASHBOT_API_KEY specified. For free turnkey analytics for your bot, go to https://www.dashbot.io/ to get your key.');
-}
+// Set up an Express-powered webserver to expose oauth and webhook endpoints
+var webserver = require(__dirname + '/components/express_webserver.js')(controller);
 
-var bot = controller.spawn({
-});
+// Tell Facebook to start sending events to this application
+require(__dirname + '/components/subscribe_events.js')(controller);
 
-controller.setupWebserver(process.env.port || 3000, function(err, webserver) {
-    controller.createWebhookEndpoints(webserver, bot, function() {
-        console.log('ONLINE!');
-    });
-});
+// Set up Facebook "thread settings" such as get started button, persistent menu
+require(__dirname + '/components/thread_settings.js')(controller);
 
+
+// Send an onboarding message when a user activates the bot
+require(__dirname + '/components/onboarding.js')(controller);
+
+// Enable Dashbot.io plugin
+require(__dirname + '/components/plugin_dashbot.js')(controller);
 
 var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
@@ -81,9 +72,26 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
 // controller.studio.before, controller.studio.after and controller.studio.validate
 if (process.env.studio_token) {
     controller.on('message_received', function(bot, message) {
-        controller.studio.runTrigger(bot, message.text, message.user, message.channel).catch(function(err) {
-            bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + err);
-        });
+        if (message.text) {
+            controller.studio.runTrigger(bot, message.text, message.user, message.channel).then(function(convo) {
+                if (!convo) {
+                    // no trigger was matched
+                    // If you want your bot to respond to every message,
+                    // define a 'fallback' script in Botkit Studio
+                    // and uncomment the line below.
+                    controller.studio.run(bot, 'fallback', message.user, message.channel);
+                } else {
+                    // set variables here that are needed for EVERY script
+                    // use controller.studio.before('script') to set variables specific to a script
+                    convo.setVar('current_time', new Date());
+                }
+            }).catch(function(err) {
+                if (err) {
+                    bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + err);
+                    debug('Botkit Studio: ', err);
+                }
+            });
+        }
     });
 } else {
     console.log('~~~~~~~~~~');
