@@ -25,7 +25,7 @@ Clone this repository:
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
 ```
-cd botkit-studio-starter-facebook
+cd botkit-starter-facebook
 npm install
 ```
 
