@@ -9,7 +9,15 @@ module.exports = function(controller, bot) {
     var webserver = express();
     webserver.use(bodyParser.json());
     webserver.use(bodyParser.urlencoded({ extended: true }));
+
+    // import express middlewares that are present in /components/express_middleware
+    var normalizedPath = require("path").join(__dirname, "express_middleware");
+    require("fs").readdirSync(normalizedPath).forEach(function(file) {
+        require("./express_middleware/" + file)(webserver, controller);
+    });
+
     webserver.use(express.static('public'));
+
 
     webserver.listen(process.env.PORT || 3000, process.env.HOSTNAME || null, function() {
 
@@ -23,6 +31,8 @@ module.exports = function(controller, bot) {
     require("fs").readdirSync(normalizedPath).forEach(function(file) {
       require("./routes/" + file)(webserver, controller);
     });
+
+    controller.webserver = webserver;
 
     return webserver;
 
