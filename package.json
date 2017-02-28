@@ -1,33 +1,57 @@
 {
-  "name": "botkit-studio-starter",
-  "version": "0.0.1",
-  "description": "A starter kit for building a custom bot with Botkit Studio",
+  "name": "botkit-starter-facebook",
+  "version": "0.0.2",
+  "description": "A starter kit for building a custom Facebook bot with Botkit Studio",
   "main": "bot.js",
   "scripts": {
       "start": "node bot.js"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "botkit": "^0.4",
+    "async": "^2.0.0-rc.5",
+    "back": "^1.0.1",
+    "body-parser": "^1.14.2",
+    "botkit-studio-sdk": "^1.0.0",
+    "clone": "2.0.0",
+    "command-line-args": "^3.0.0",
+    "crypto": "0.0.3",
     "dashbot": "0.7.4",
     "debug": "^2.6.0",
     "express": "^4.14.0",
+    "https-proxy-agent": "^1.0.0",
+    "jfs": "^0.2.6",
+    "localtunnel": "^1.8.1",
+    "md5": "^2.1.0",
+    "mustache": "^2.2.1",
+    "promise": "^7.1.1",
+    "randomstring": "^1.1.5",
     "request": "^2.79.0",
+    "url": "^0.11.0",
+    "ware": "^1.3.0",
     "wordfilter": "^0.2.6"
+    "ws": "^1.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jscs": "^2.7.0",
+    "mocha": "^2.4.5",
+    "should": "^8.0.2",
+    "winston": "^2.1.1"
+  },
+  "scripts": {
+    "pretest": "jscs ./lib/",
+    "test": "mocha tests/*.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/howdyai/botkit-studio-starter.git"
+    "url": "https://github.com/howdyai/botkit-starter-facebook.git"
   },
   "bugs": {
-    "url": "https://github.com/howdyai/botkit-studio-starter/issues"
+    "url": "https://github.com/howdyai//botkit-starter-facebook/issues"
   },
-  "homepage": "https://github.com/howdyai/botkit-studio-starter",
+  "homepage": "https://github.com/howdyai//botkit-starter-facebook",
   "keywords": [
     "bots",
     "chatbots",
-    "slack"
+    "facebook messenger"
   ],
   "author": "ben@howdy.ai",
   "license": "ISC"
