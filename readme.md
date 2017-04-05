@@ -11,7 +11,7 @@ While Botkit Studio is *not required* to build a bot using Botkit, we highly rec
 
 ### Instant Start
 
-[Remix this project on Glitch](https://glitch.com/edit/#!/project/botkit-facebook)
+[Remix this project on Glitch](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-facebook)
 
 [Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-facebook/master)
 
@@ -29,17 +29,19 @@ cd botkit-starter-facebook
 npm install
 ```
 
-Get a Facebook access tokens [as described here](https://github.com/howdyai/botkit/blob/master/readme-facebook.md#getting-started)
+Get a Facebook `access_token` and `verify_token` [as described here](https://github.com/howdyai/botkit/blob/master/docs/readme-facebook.md#getting-started)
 
-Get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/)
+Get a Botkit Studio API `studio_token` [from your Botkit developer account](https://studio.botkit.ai/)
 
-Run your bot from the command line with your new tokens:
+Update the `.env` file with your newly acquired tokens.
 
-`page_token=<page access token> verify_token=<webhook verification token> studio_token=<botkit studio token> node .`
+Launch your bot application by typing:
+
+`node .`
 
 Facebook requires your application be available at an SSL-enabled endpoint. To expose an endpoint during development, we recommend using [localtunnel.me](http://localtunnel.me) or [ngrok](http://ngrok.io), either of which can be used to temporarily expose your bot to Facebook. Once stable and published to the real internet, use nginx or another web server to provide an SSL-powered front end to your bot application.
 
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/readme-studio.md)
+Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/docs/readme-studio.md)
 
 ### Extend This Bot
 
