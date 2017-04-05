@@ -17,6 +17,9 @@ This is a sample Facebook bot built with Botkit.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+var env = require('node-env-file');
+env(__dirname + '/.env');
+
 
 if (!process.env.page_token) {
     console.log('Error: Specify a Facebook page_token in environment.');
