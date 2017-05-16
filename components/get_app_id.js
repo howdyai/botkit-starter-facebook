@@ -4,7 +4,7 @@ var debug = require('debug')('botkit:get_app_id');
 module.exports = function(controller) {
 
     debug('Getting Facebook App ID...');
-    request.post('https://graph.facebook.com/app/?access_token=' + controller.config.access_token,
+    request.get('https://graph.facebook.com/app/?access_token=' + controller.config.access_token,
         function(err, res, body) {
             if (err) {
                 debug('Could not get Facebook App ID! Check your page token.');
@@ -24,5 +24,4 @@ module.exports = function(controller) {
               }
             }
         });
-
 };
