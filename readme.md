@@ -1,6 +1,6 @@
-# Botkit Starter Kit for Slack Bots
+# Botkit Starter Kit for Facebook Bots
 
-This repo contains everything you need to get started building a Slack bot with [Botkit](https://botkit.ai) and [Botkit Studio](https://botkit.ai).
+This repo contains everything you need to get started building a Facebook bot with [Botkit](https://botkit.ai) and [Botkit Studio](https://botkit.ai).
 
 Botkit is designed to ease the process of designing and running useful, creative bots that live inside messaging platforms. Bots are applications that can send and receive messages, and in many cases, appear alongside their human counterparts as users.
 
@@ -8,42 +8,37 @@ Some bots talk like people, others silently work in the background, while others
 
 Our goal with Botkit is to make bot building easy, fun, and accessible to anyone with the desire to create a future filled with talking machines!
 
-If you are looking to create a bot on other platforms using Glitch, check out the [Botkit project page](https://glitch.com/botkit).
-
-### Getting Started
-
-There are a myriad of methods you can use to set up an application on Slack, here are some of your options:
+### Get Started
+You have a couple of paths you can use to run your Botkit project:
 
 #### Use Botkit Studio
-[Botkit Studio](https://studio.botkit.ai/signup?code=slackglitch) is a set of tools that adds capabilities to the open source Botkit library by offering hosted GUI interfaces for script management and action trigger definition. 
+[Botkit Studio](https://studio.botkit.ai/signup?code=facebookstarter) is a set tools that adds capabilities
+to the open source Botkit library by offering hosted GUI interfaces for script
+management and action trigger definition. Botkit Studio is built by the company
+that created and maintains the open source Botkit library, [Howdy.](https://howdy.ai)
 
 While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
 
-#### Install Botkit
+### Setup Botkit
 
-[Remix this project on Glitch](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-slack)
+[Remix this project on Glitch](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-facebook)
 
-[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-slack/master)
+[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-facebook/master)
 
-Clone this repository using Git:
+Clone this repository:
 
-`git clone https://github.com/howdyai/botkit-starter-slack.git`
+`git clone https://github.com/howdyai/botkit-starter-facebook.git`
 
 Install dependencies, including [Botkit](https://github.com/howdyai/botkit):
 
 ```
-cd botkit-starter-slack
+cd botkit-starter-facebook
 npm install
 ```
 
-#### Set up your Slack Application 
-Once you have setup your Botkit development enviroment, the next thing you will want to do is set up a new Slack application via the [Slack developer portal](https://api.slack.com/). This is a multi-step process, but only takes a few minutes. 
+Get a Facebook `access_token` and `verify_token` [as described here](https://github.com/howdyai/botkit/blob/master/docs/readme-facebook.md#getting-started)
 
-* [Read this step-by-step guide](https://github.com/howdyai/botkit/blob/master/docs/slack-events-api.md) to make sure everything is set up. 
-
-* We also have this [handy video walkthrough](https://youtu.be/us2zdf0vRz0) for setting up this project with Glitch.
-
-Next, get a Botkit Studio token [from your Botkit developer account](https://studio.botkit.ai/) if you have decided to use Studio. 
+Get a Botkit Studio API `studio_token` [from your Botkit developer account](https://studio.botkit.ai/)
 
 Update the `.env` file with your newly acquired tokens.
 
@@ -51,10 +46,11 @@ Launch your bot application by typing:
 
 `node .`
 
-Now, visit your new bot's login page: http://localhost:3000/login
+Facebook requires your application be available at an SSL-enabled endpoint. To expose an endpoint during development, we recommend using [localtunnel.me](http://localtunnel.me) or [ngrok](http://ngrok.io), either of which can be used to temporarily expose your bot to Facebook. Once stable and published to the real internet, use nginx or another web server to provide an SSL-powered front end to your bot application.
 
 Now comes the fun part of [making your bot!](https://github.com/howdyai/botkit/blob/master/docs/readme.md#basic-usage)
 
+Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md)
 
 ### Extend This Starter kit
 
@@ -93,14 +89,13 @@ You can find full documentation for Botkit on our [GitHub page](https://github.c
 ###  Need more help?
 * Glitch allows users to ask the community for help directly from the editor! For more information on raising your hand, [read this blog post.](https://medium.com/glitch/just-raise-your-hand-how-glitch-helps-aa6564cb1685)
 
-* Join our thriving community of Botkit developers and bot enthusiasts at large. Over 4500 members strong, [our open Slack group](http://community.botkit.ai) is _the place_ for people interested in the art and science of making bots. 
+* Join our thriving community of Botkit developers and bot enthusiasts at large. Over 4500 members strong, [our open Facebook group](http://community.botkit.ai) is _the place_ for people interested in the art and science of making bots. 
 
  Come to ask questions, share your progress, and commune with your peers!
 
 * We also host a [regular meetup and annual conference called TALKABOT.](http://talkabot.ai) Come meet and learn from other bot developers! 
  
  [Full video of our 2016 event is available on Youtube.](https://www.youtube.com/playlist?list=PLD3JNfKLDs7WsEHSal2cfwG0Fex7A6aok)
-
 
 
 # About Botkit
