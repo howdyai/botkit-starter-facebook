@@ -46,7 +46,9 @@ Launch your bot application by typing:
 
 `node .`
 
-Facebook requires your application be available at an SSL-enabled endpoint. To expose an endpoint during development, we recommend using [localtunnel.me](http://localtunnel.me) or [ngrok](http://ngrok.io), either of which can be used to temporarily expose your bot to Facebook. Once stable and published to the real internet, use nginx or another web server to provide an SSL-powered front end to your bot application.
+Facebook requires your application be available at an SSL-enabled endpoint. To expose an endpoint during development, we recommend using [localtunnel.me](http://localtunnel.me) or [ngrok](http://ngrok.io), either of which can be used to temporarily expose your bot to Facebook. Both Glitch and Heroku deployments will provide this to your automatically.
+
+Once stable and published to the real internet, use nginx or another web server to provide an SSL-powered front end to your bot application.
 
 Now comes the fun part of [making your bot!](https://github.com/howdyai/botkit/blob/master/docs/readme.md#basic-usage)
 
