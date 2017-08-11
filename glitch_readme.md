@@ -10,6 +10,18 @@ Our goal with Botkit is to make bot building easy, fun, and accessible to anyone
 
 If you are looking to create a bot on other platforms using Glitch, check out the [Botkit project page](https://glitch.com/botkit).
 
+
+### What's Included
+* [Botkit core](https://github.com/howdyai/botkit/blob/master/docs/readme.md#developing-with-botkit) - a complete programming system for building conversational software
+* [Botkit Studio API](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md#function-index) - additional APIs that extend Botkit with powerful tools and APIs
+* [Pre-configured Express.js webserver](https://expressjs.com/) including:
+   * A customizable "Install my Bot" homepage
+   * Webhook endpoints for communicating with platforms
+* Sample skill modules that demonstrate various features of Botkit
+* A component that manages your app's webhook subscriptions
+* A customizable onboarding experience for new teams powered by Botkit Studio
+* A customizable component that configures the bot's menu and other settings-based features
+
 ### Getting Started
 
 There are a myriad of methods you can use to set up an application on Facebook, but we feel this is the most flexible path you can use to setup your bot for [Facebook Messenger and Facebook @Workplace.](https://github.com/howdyai/botkit/blob/master/docs/readme-facebook.md)
