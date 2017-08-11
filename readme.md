@@ -8,6 +8,17 @@ Some bots talk like people, others silently work in the background, while others
 
 Our goal with Botkit is to make bot building easy, fun, and accessible to anyone with the desire to create a future filled with talking machines!
 
+### What's Included
+* [Botkit core](https://github.com/howdyai/botkit/blob/master/docs/readme.md#developing-with-botkit) - a complete programming system for building conversational software
+* [Botkit Studio API](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md#function-index) - additional APIs that extend Botkit with powerful tools and APIs
+* [Pre-configured Express.js webserver](https://expressjs.com/) including:
+    * A customizable "Install my Bot" homepage
+* Webhook endpoints for communicating with platforms
+* Sample skill modules that demonstrate various features of Botkit
+* A component that manages your app's webhook subscriptions
+* A customizable onboarding experience for new teams powered by Botkit Studio
+* A customizable component that configures the bot's menu and other settings-based features
+
 ### Get Started
 You have a couple of paths you can use to run your Botkit project:
 
