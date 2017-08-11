@@ -19,7 +19,7 @@ If you are looking to create a bot on other platforms using Glitch, check out th
    * Webhook endpoints for communicating with platforms
 * Sample skill modules that demonstrate various features of Botkit
 * A component that manages your app's webhook subscriptions
-* A customizable onboarding experience for new teams powered by Botkit Studio
+* A customizable onboarding experience for new users powered by Botkit Studio
 * A customizable component that configures the bot's menu and other settings-based features
 
 ### Getting Started
