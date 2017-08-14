@@ -32,7 +32,7 @@ While Botkit Studio is *not required* to build a bot using Botkit, we highly rec
 
 ### Setup Botkit
 
-[Remix this project on Glitch](https://glitch.com/edit/#!/import/github/howdyai/botkit-starter-facebook)
+[Remix this project on Glitch](https://glitch.com/~botkit-facebook)
 
 [Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/howdyai/botkit-starter-facebook/master)
 
