@@ -59,6 +59,9 @@ require(__dirname + '/components/thread_settings.js')(controller);
 // Send an onboarding message when a user activates the bot
 require(__dirname + '/components/onboarding.js')(controller);
 
+// Load in some helpers that make running Botkit on Glitch.com better
+require(__dirname + '/components/plugin_glitch.js')(controller);
+
 // Enable Dashbot.io plugin
 require(__dirname + '/components/plugin_dashbot.js')(controller);
 
