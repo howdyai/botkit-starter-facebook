@@ -9,20 +9,25 @@ module.exports = function(controller) {
     controller.api.thread_settings.get_started('sample_get_started_payload');
     controller.api.thread_settings.menu([
         {
-            "type":"postback",
-            "title":"Hello",
-            "payload":"hello"
-        },
-        {
-            "type":"postback",
-            "title":"Help",
-            "payload":"help"
-        },
-        {
-          "type":"web_url",
-          "title":"Botkit Docs",
-          "url":"https://github.com/howdyai/botkit/blob/master/readme-facebook.md"
-        },
-    ]);
+            "locale": "default",
+            "composer_input_disabled": false,
+            "call_to_actions": [    
+                {
+                    "type":"postback",
+                    "title":"Hello",
+                    "payload":"hello"
+                },
+                {
+                    "type":"postback",
+                    "title":"Help",
+                    "payload":"help"
+                },
+                {
+                  "type":"web_url",
+                  "title":"Botkit Docs",
+                  "url":"https://github.com/howdyai/botkit/blob/master/readme-facebook.md"
+                }
+        }        
+            ]);
 
 }
