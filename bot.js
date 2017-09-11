@@ -85,7 +85,7 @@ if (process.env.studio_token) {
                     // If you want your bot to respond to every message,
                     // define a 'fallback' script in Botkit Studio
                     // and uncomment the line below.
-                    controller.studio.run(bot, 'fallback', message.user, message.channel);
+                    controller.studio.run(bot, 'fallback', message.user, message.channel, message);
                 } else {
                     // set variables here that are needed for EVERY script
                     // use controller.studio.before('script') to set variables specific to a script
