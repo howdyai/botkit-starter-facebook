@@ -39,7 +39,6 @@ var debug = require('debug')('botkit:main');
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.facebookbot({
     // debug: true,
-    receive_via_postback: true,
     verify_token: process.env.verify_token,
     access_token: process.env.page_token,
     studio_token: process.env.studio_token,
@@ -78,9 +77,9 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
 // You can tie into the execution of the script using the functions
 // controller.studio.before, controller.studio.after and controller.studio.validate
 if (process.env.studio_token) {
-    controller.on('message_received', function(bot, message) {
+    controller.on('message_received,facebook_postback', function(bot, message) {
         if (message.text) {
-            controller.studio.runTrigger(bot, message.text, message.user, message.channel).then(function(convo) {
+            controller.studio.runTrigger(bot, message.text, message.user, message.channel, message).then(function(convo) {
                 if (!convo) {
                     // no trigger was matched
                     // If you want your bot to respond to every message,
