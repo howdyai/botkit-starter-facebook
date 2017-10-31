@@ -61,9 +61,6 @@ require(__dirname + '/components/onboarding.js')(controller);
 // Load in some helpers that make running Botkit on Glitch.com better
 require(__dirname + '/components/plugin_glitch.js')(controller);
 
-// Enable Dashbot.io plugin
-require(__dirname + '/components/plugin_dashbot.js')(controller);
-
 var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
   require("./skills/" + file)(controller);
