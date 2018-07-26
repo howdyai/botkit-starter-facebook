@@ -19,17 +19,6 @@ Our goal with Botkit is to make bot building easy, fun, and accessible to anyone
 * A customizable onboarding experience for new users powered by Botkit Studio
 * A customizable component that configures the bot's menu and other settings-based features
 
-### Get Started
-You have a couple of paths you can use to run your Botkit project:
-
-#### Use Botkit Studio
-[Botkit Studio](https://studio.botkit.ai/signup?code=facebookstarter) is a set tools that adds capabilities
-to the open source Botkit library by offering hosted GUI interfaces for script
-management and action trigger definition. Botkit Studio is built by the company
-that created and maintains the open source Botkit library, [Howdy.](https://howdy.ai)
-
-While Botkit Studio is *not required* to build a bot using Botkit, we highly recommend it as your bot will be easier to manage, customize and extend.
-
 ### Setup Botkit
 
 [Remix this project on Glitch](https://glitch.com/~botkit-facebook)
