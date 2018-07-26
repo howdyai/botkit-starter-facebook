@@ -1,6 +1,6 @@
 # Botkit Starter Kit for Facebook Bots
 
-This repo contains everything you need to get started building a Facebook bot with [Botkit](https://botkit.ai) and [Botkit Studio](https://botkit.ai).
+This repo contains everything you need to get started building a Facebook bot with [Botkit](https://botkit.ai).
 
 Botkit is designed to ease the process of designing and running useful, creative bots that live inside messaging platforms. Bots are applications that can send and receive messages, and in many cases, appear alongside their human counterparts as users.
 
@@ -9,14 +9,12 @@ Some bots talk like people, others silently work in the background, while others
 Our goal with Botkit is to make bot building easy, fun, and accessible to anyone with the desire to create a future filled with talking machines!
 
 ### What's Included
-* [Botkit core](https://github.com/howdyai/botkit/blob/master/docs/readme.md#developing-with-botkit) - a complete programming system for building conversational software
-* [Botkit Studio API](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md#function-index) - additional APIs that extend Botkit with powerful tools and APIs
+* [Botkit core](https://botkit.ai/docs/core.html) - a complete programming system for building conversational software
 * [Pre-configured Express.js webserver](https://expressjs.com/) including:
    * A customizable "Install my Bot" homepage
    * Webhook endpoints for communicating with platforms
 * Sample skill modules that demonstrate various features of Botkit
 * A component that manages your app's webhook subscriptions
-* A customizable onboarding experience for new users powered by Botkit Studio
 * A customizable component that configures the bot's menu and other settings-based features
 
 ### Setup Botkit
@@ -36,9 +34,7 @@ cd botkit-starter-facebook
 npm install
 ```
 
-Get a Facebook `access_token` and `verify_token` [as described here](https://github.com/howdyai/botkit/blob/master/docs/readme-facebook.md#getting-started)
-
-Get a Botkit Studio API `studio_token` [from your Botkit developer account](https://studio.botkit.ai/)
+Get a Facebook `access_token` and `verify_token` [as described here](https://botkit.ai/docs/readme-facebook.html#getting-started)
 
 Update the `.env` file with your newly acquired tokens.
 
@@ -50,9 +46,7 @@ Facebook requires your application be available at an SSL-enabled endpoint. To e
 
 Once stable and published to the real internet, use nginx or another web server to provide an SSL-powered front end to your bot application.
 
-Now comes the fun part of [making your bot!](https://github.com/howdyai/botkit/blob/master/docs/readme.md#basic-usage)
-
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md)
+Now comes the fun part of [making your bot!](https://botkit.ai/docs/)
 
 ### Extend This Starter kit
 
@@ -73,20 +67,18 @@ module.exports = function(controller) {
 }
 ```
 
-Continue your journey to becoming a champion botmaster by [reading the Botkit Studio SDK documentation here.](https://github.com/howdyai/botkit/blob/master/docs/readme-studio.md)
-
 
 ### Customize Storage
 
 By default, the starter kit uses a simple file-system based storage mechanism to record information about the teams and users that interact with the bot. While this is fine for development, or use by a single team, most developers will want to customize the code to use a real database system.
 
-There are [Botkit plugins for all the major database systems](https://github.com/howdyai/botkit/blob/master/docs/readme-middlewares.md#storage-modules) which can be enabled with just a few lines of code.
+There are [Botkit plugins for all the major database systems](https://botkit.ai/docs/readme-middlewares.md#storage-modules) which can be enabled with just a few lines of code.
 
 We have enabled our [Mongo middleware]() for starters in this project. To use your own Mongo database, just fill out `MONGO_URI` in your `.env` file with the appropriate information. For tips on reading and writing to storage, [check out these medium posts](https://botkit.groovehq.com/knowledge_base/categories/build-a-bot)
 
 # Developer & Support Community
 
-You can find full documentation for Botkit on our [GitHub page](https://github.com/howdyai/botkit/blob/master/readme.md). Botkit Studio users can access the [Botkit Studio Knowledge Base](https://botkit.groovehq.com/help_center) for help in managing their account.
+You can find full documentation for Botkit on our [Docs site](https://botkit.ai/docs/).
 
 ###  Need more help?
 * Glitch allows users to ask the community for help directly from the editor! For more information on raising your hand, [read this blog post.](https://medium.com/glitch/just-raise-your-hand-how-glitch-helps-aa6564cb1685)
