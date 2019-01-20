@@ -7,6 +7,8 @@
     "start": "nodemon bot.js"
   },
   "dependencies": {
+    "await-to-js": "^2.1.1",
+    "bestbuy": "^2.1.3",
     "body-parser": "^1.15.2",
     "botkit": "^0.7.0",
     "debug": "^2.6.0",
