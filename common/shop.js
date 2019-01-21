@@ -1,38 +1,39 @@
-/* eslint-disable linebreak-style */
 const { to } = require('await-to-js');
 const store = require('../helpers/bestbuy/store.js');
+const BotError = require('../helpers/errors/error');
+const errors = require('../helpers/errors/error-messages');
 
 module.exports = async (bot, message) => {
   const [err, items] = await to(store());
 
-  console.error(err);
-  if (err) console.log('Error in shop');
-  if (!items) console.log('Error in shop, No items');
+  if (err) throw new BotError(errors.getItemsError);
+  if (!items) throw new BotError(errors.noAviableProducts);
 
-  // eslint-disable-next-line no-plusplus
+  const elements = [];
   for (let i = 0; i <= 5; i++) {
-    const attachment = {
-      type: 'template',
-      payload: {
-        template_type: 'generic',
-        elements: [
-          {
-            title: items[i].name,
-            image_url: items[i].image,
-            buttons: [
-              {
-                type: 'postback',
-                title: 'Info',
-                payload: `getSingleInfo:${items[i].name}`,
-              },
-            ],
-          },
-        ],
-      },
+    const element = {
+      title: items[i].name,
+      image_url: items[i].image,
+      buttons: [
+        {
+          type: 'postback',
+          title: 'Info',
+          payload: `getSingleInfo:${items[i].name}`,
+        },
+      ],
     };
 
-    bot.reply(message, {
-      attachment,
-    });
+    elements.push(element);
   }
+  const attachment = {
+    type: 'template',
+    payload: {
+      template_type: 'generic',
+      elements,
+    },
+  };
+
+  bot.reply(message, {
+    attachment,
+  });
 };

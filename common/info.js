@@ -1,17 +1,15 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-param-reassign */
 const { to } = require('await-to-js');
 const store = require('../helpers/bestbuy/store.js');
+const BotError = require('../helpers/errors/error');
+const errors = require('../helpers/errors/error-messages');
 
 module.exports = async (bot, message, name) => {
   const [err, items] = await to(store());
-  if (err) console.log('Error in info');
+  if (err) throw new BotError(errors.getItemsError);
 
-  const item = items.filter((el) => {
-    return el.name === name;
-  });
+  const item = items.filter(el => el.name === name);
 
-  if (!item) console.log('Error in info, no item');
+  if (!item) throw new BotError(errors.itemNotFound);
 
   const attachment = {
     type: 'template',

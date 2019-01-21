@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 module.exports = (bot, message) => {
   bot.reply(message, {
     text: 'Please share your location for delivery',

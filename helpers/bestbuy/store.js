@@ -1,5 +1,6 @@
-/* eslint-disable linebreak-style */
 const env = require('node-env-file');
+const BotError = require('../errors/error');
+const errors = require('../errors/error-messages');
 
 env(`${__dirname}../../../.env`);
 
@@ -9,17 +10,19 @@ const { to } = require('await-to-js');
 module.exports = async () => {
   const store = [];
 
-  const [err, data] = await to(bby.recommendations('mostViewed'));
-  if (err) console.error('Error in store');
-  if (!data) console.log('Error in store');
+  const [err, data] = await to(bby.products(
+    'categoryPath.id=abcat0100000',
+    { show: 'name,longDescription,image' },
+  ));
+  if (err) throw new BotError(errors.bestBuyError);
+  if (!data) throw new BotError(errors.noAviableProducts);
 
-  Object.keys(data.results).forEach((key) => {
-    const product = data.results[key];
+  Object.keys(data.products).forEach((key) => {
+    const product = data.products[key];
     const item = {
-      name: product.names.title,
-      image: product.images.standard,
-      links: product.links,
-      description: product.descriptions.short,
+      name: product.name,
+      image: product.image,
+      description: product.longDescription,
     };
     store.push(item);
   });

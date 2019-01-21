@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 module.exports = (bot, message) => {
   bot.reply(message, {
     text: 'Here is main menu',

@@ -1,12 +1,24 @@
 const debug = require('debug')('botkit:incoming_webhooks');
+const receivedMessage = require('../../common/received_message');
 
 // eslint-disable-next-line func-names
 module.exports = function (webserver, controller) {
   debug('Configured POST /facebook/receive url for receiving events');
   webserver.post('/facebook/receive', (req, res) => {
     // NOTE: we should enforce the token check
-
     // respond to Slack that the webhook has been received.
+    const data = req.body;
+    if (data.object === 'page') {
+      data.entry.forEach((entry) => {
+        entry.messaging.forEach((event) => {
+          if (event.message) {
+            receivedMessage(event);
+          }
+        });
+      });
+    }
+
+
     res.status(200);
     res.send('ok');
 
