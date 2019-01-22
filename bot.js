@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
            ______     ______     ______   __  __     __     ______
           /\  == \   /\  __ \   /\__  _\ /\ \/ /    /\ \   /\__  _\
@@ -19,9 +16,21 @@ This is a sample Facebook bot built with Botkit.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-const env = require('node-env-file');
+require('dotenv').config();
+// const env = require('node-env-file');
 
-env(`${__dirname}/.env`);
+const mongoose = require('mongoose');
+
+const db = mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+
+
+db.then(() => {
+  console.log('Status: OK');
+}).catch((e) => {
+  console.error('e');
+});
+
+// env(`${__dirname}/.env`);
 
 
 if (!process.env.page_token) {
@@ -63,6 +72,8 @@ require(`${__dirname}/components/onboarding.js`)(controller);
 
 // Load in some helpers that make running Botkit on Glitch.com better
 require(`${__dirname}/components/plugin_glitch.js`)(controller);
+
+require(`${__dirname}/common/identify_user.js`)(controller);
 
 const normalizedPath = require('path').join(__dirname, 'skills');
 require('fs').readdirSync(normalizedPath).forEach((file) => {

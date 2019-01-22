@@ -20,4 +20,19 @@ module.exports = {
     title: 'Item not found',
     message: 'Item not found in store',
   },
+  saveDbError: {
+    code: 500,
+    title: 'saveDbError',
+    message: 'Cant save data to db',
+  },
+  findUserError: {
+    code: 500,
+    title: 'findUserError',
+    message: 'Error in finding user',
+  },
+  getUserData: {
+    code: 500,
+    title: 'getUserData',
+    message: 'Cant get user profile data',
+  }
 };

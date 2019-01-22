@@ -4,6 +4,9 @@ module.exports = {
         "linebreak-style": "off",
         "prefer-destructuring": "off",
         "import/order": "off",
-        "no-plusplus": "no-plusplus"
+        "no-plusplus": "off",
+        "import/no-dynamic-require": "off",
+        "global-require": "off",
+        "no-unused-vars": "off",
     }
 };
