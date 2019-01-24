@@ -9,12 +9,14 @@ module.exports = async (bot, message) => {
 
   await User.findOne({ psid: senderPsid }, (error, user) => {
     if (error) throw new BotError(errors.findUserError);
-    user.phone = phone;
-    user.save((err) => {
-      if (err) {
-        if (err) throw new BotError(errors.saveDbError);
-      }
-    });
+    if (!user.phone) {
+      user.phone = phone;
+      user.save((err) => {
+        if (err) {
+          if (err) throw new BotError(errors.saveDbError);
+        }
+      });
+    }
   });
 
   bot.reply(message, {

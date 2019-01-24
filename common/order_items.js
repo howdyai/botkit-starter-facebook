@@ -13,7 +13,7 @@ module.exports = (event) => {
 
       const msg = `lat : ${lat} ,long : ${long}\n`;
 
-      console.log(msg);
+      // console.log(msg);
     }
   } else {
     console.log('Webhook received unknown event: ');

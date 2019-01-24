@@ -5,7 +5,7 @@ module.exports = (bot, message) => {
       {
         content_type: 'text',
         title: 'My purchases',
-        payload: '<POSTBACK_PAYLOAD>',
+        payload: 'My purchases',
       },
       {
         content_type: 'text',
@@ -15,7 +15,7 @@ module.exports = (bot, message) => {
       {
         content_type: 'text',
         title: 'Favourites',
-        payload: '<POSTBACK_PAYLOAD>',
+        payload: 'Favourites',
       },
       {
         content_type: 'text',

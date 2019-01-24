@@ -15,10 +15,10 @@ module.exports = {
     title: 'getItemsError',
     message: 'Error in getting items in store module',
   },
-  itemNotFound: {
+  goodNotFound: {
     code: 404,
-    title: 'Item not found',
-    message: 'Item not found in store',
+    title: 'Good not found',
+    message: 'Good not found in store',
   },
   saveDbError: {
     code: 500,
@@ -34,5 +34,10 @@ module.exports = {
     code: 500,
     title: 'getUserData',
     message: 'Cant get user profile data',
-  }
+  },
+  findGoodsError: {
+    code: 500,
+    title: 'findGoodsError',
+    message: 'Error in finding goods',
+  },
 };

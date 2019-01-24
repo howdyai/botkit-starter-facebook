@@ -1,15 +1,38 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-param-reassign */
 /* eslint-disable func-names */
+const User = require('../helpers/db/models/User');
+const BotError = require('../helpers/errors/error');
+const errors = require('../helpers/errors/error-messages');
+
 module.exports = function (controller) {
-  // look for sticker, image and audio attachments
-  // capture them, and fire special events
-  controller.on('message_received', (bot, message) => {
+  controller.on('message_received', async (bot, message) => {
+    const senderPsid = message.sender.id;
 
     if (!message.text) {
-      if (message.sticker_id) {
-        controller.trigger('sticker_received', [bot, message]);
-        return false;
-      } if (message.attachments && message.attachments[0]) {
-        controller.trigger(`${message.attachments[0].type}_received`, [bot, message]);
+      if (message.attachments && message.attachments[0]) {
+        let location;
+        if (message.attachments[0].payload.coordinates) {
+          location = message.attachments[0].payload.coordinates;
+        }
+
+        await User.findOne({ psid: senderPsid }, (error, user) => {
+          if (error) throw new BotError(errors.findUserError);
+          const purshases = [];
+
+          user.shopingList.forEach((el) => {
+            const purshase = { ...el, date: Date.now(), location };
+            purshases.push(purshase);
+          });
+          user.purshases = purshases;
+          user.shopingList = [];
+          user.save((err) => {
+            if (err) {
+              if (err) throw new BotError(errors.saveDbError);
+            }
+          });
+        });
+        bot.reply(message, 'Your order has been processed');
         return false;
       }
     }

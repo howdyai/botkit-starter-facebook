@@ -1,6 +1,5 @@
 const debug = require('debug')('botkit:incoming_webhooks');
-const receivedMessage = require('../../common/received_message');
-const identifyUser = require('../../common/identify_user');
+const orderItems = require('../../common/order_items');
 
 // eslint-disable-next-line func-names
 module.exports = function (webserver, controller) {
@@ -11,10 +10,9 @@ module.exports = function (webserver, controller) {
     const data = req.body;
     if (data.object === 'page') {
       data.entry.forEach((entry) => {
-        // identifyUser(entry);
         entry.messaging.forEach((event) => {
           if (event.message) {
-            receivedMessage(event);
+            orderItems(event);
           }
         });
       });
