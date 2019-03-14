@@ -43,6 +43,7 @@ var controller = Botkit.facebookbot({
     access_token: process.env.page_token,
     studio_token: process.env.studio_token,
     studio_command_uri: process.env.studio_command_uri,
+    stats_optout: true,
 });
 
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
@@ -111,3 +112,5 @@ function usage_tip() {
     console.log('Get a Botkit Studio token here: https://studio.botkit.ai/')
     console.log('~~~~~~~~~~');
 }
+
+var app = require('./app1')(controller);

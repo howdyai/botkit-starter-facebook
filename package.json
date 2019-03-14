@@ -15,7 +15,9 @@
     "request": "^2.79.0",
     "wordfilter": "^0.2.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^5.15.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/howdyai/botkit-starter-facebook.git"
