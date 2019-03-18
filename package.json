@@ -1,7 +1,7 @@
 {
   "name": "botkit-starter-facebook",
   "version": "0.0.2",
-  "description": "A starter kit for building a custom Facebook Messenger bot with Botkit Studio",
+  "description": "A starter kit for building a custom Facebook Messenger bot",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
