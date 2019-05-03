@@ -1,3 +1,12 @@
+# This repo is deprecated!
+
+To get a fresh Botkit starter kit, use the Yeoman generator or [remix a starter kit on Glitch](https://glitch.com/botkit)
+
+```
+npm install -g yo generator-botkit
+yo botkit
+```
+
 # Botkit Starter Kit for Facebook Bots
 
 This repo contains everything you need to get started building a Facebook bot with [Botkit](https://botkit.ai).
