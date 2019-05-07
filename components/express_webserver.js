@@ -21,7 +21,7 @@ module.exports = function(controller, bot) {
 
     webserver.listen(process.env.PORT || 3000, null, function() {
 
-        debug('Express webserver configured and listening at http://localhost:' + process.env.PORT || 3000);
+        debug('Express webserver configured and listening at http://localhost:' + (process.env.PORT || 3000));
 
     });
 
